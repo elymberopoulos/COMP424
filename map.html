@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyPart</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+
+      #myMap {
+        height: 50%;
+        width: 50%;
+      }
+
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="myMap"></div>
+    <script>
+
+
+      var myMap, mainWindow;
+      function initMap() {
+        myMap = new google.maps.Map(document.getElementById('myMap'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 6
+        });
+        mainWindow = new google.maps.mainWindow;
+
+
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var thisPosition = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            mainWindow.setPosition(thisPosition);
+            mainWindow.setContent('Location found.');
+            mainWindow.open(myMap);
+            myMap.setCenter(thisPosition);
+          }, function() {
+            handleLocationError(true, mainWindow, myMap.getCenter());
+          });
+        } else {
+
+          handleLocationError(false, mainWindow, myMap.getCenter());
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, mainWindow, thisPosition) {
+        mainWindow.setPosition(thisPosition);
+        mainWindow.setContent(browserHasGeolocation ?
+                              'Error: The Location did not work.' :
+                              'Error: Your browser doesn\'t support Location API.');
+        mainWindow.open(myMap);
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?AIzaSyCKef-KhLOrQtq7QJSR_8eC53u0f7A1Hds&callback=initMap">
+    </script>
+  </body>
+</html>
