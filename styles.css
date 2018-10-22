@@ -9,71 +9,8 @@ body{
   font-family: rationale, futura, arial;
   background-repeat: no-repeat;
   color: white;
-  grid-column-start: 1;
-  grid-column-end: 12;
-  grid-row-start: 1;
-  grid-row-end: 1;
-  margin: 2% auto;
-}
-.wrapper{
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: minmax(100px, auto);
-  grid-column-gap: 5px;
-  grid-row-gap: 3px;
-}
-.webSiteHeader{
-  background-color: #034f8b;
-  font-style: italic;
-  grid-column-start: 1;
-  grid-column-end: 13;
-  grid-row-start: 1;
-  grid-row-end: 2;
-
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: minmax(5px, auto);
-  align-items: end;
-}
-#mainTitle1{
-  font-size: 45px;
-  display: inline-block;
-  grid-column-start: 1;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  padding: 0px;
-  margin: 0px;
-}
-#mainTitle2{
-  font-size: 18px;
-  display: inline-block;
-  grid-column-start: 5;
-  grid-column-end: 10;
-  grid-row-start:1;
-  grid-row-end: 2;
-  margin: 0px;
-  padding-bottom: 5px;
-
-
-}
-#loginButton{
-  background-color: #0099e6;
-  grid-column-start: 10;
-  grid-column-end: 11;
-  grid-row-start: 1;
-  grid-row-end: 1;
-}
-#createAccountButton{
-  background-color: #0099e6;
-  grid-column-start: 11;
-  grid-column-end: 12;
-  grid-row-start: 1;
-  grid-row-end: 1;
 }
 
-
-/*
 .webSiteHeader{
   background-color: #034f8b;
   font-style: italic;
@@ -96,7 +33,7 @@ body{
   float: right;
   margin-top: 35px;
   width: 120px;
-  /*background-color: #0099e6;
+  background-color: #0099e6;
   margin-right: 2px;
 }
 
@@ -118,6 +55,11 @@ body{
   background-color: #0099e6;
 }
 
+.navItem a{
+  text-decoration: none;
+  color: black;
+}
+
 .navItem:hover{
   display: inline;
   margin: 0px;
@@ -126,10 +68,11 @@ body{
   background-color: white;
   color: black;
 }
+
 #aboutTitle{
   text-align: center;
 }
 #aboutArticle{
   background-color: rgb(13, 123, 164, 0.7);
   width: 90%;
-}*/
+}
