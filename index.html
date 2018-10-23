@@ -7,40 +7,97 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Rationale" rel="stylesheet">
 </head>
 
 <body>
   <div class="wrapper">
+    <header id = "webSiteHeader" class="webSiteHeader">
+      <h1 id="mainTitle1">Rendezvous</h1>
+      <h4 id="mainTitle2">Keeping an eye on your loved ones when you can't.</h4>
+      <button id = "loginButton">Login</button>
+      <button id = "createAccountButton"><a href="AccountForm.html">Create Account</a></button>
+    </header>
+<!-- DISPLAY THIS HEADER ON FUNCTION CLICK -->
+    <div id = "hiddenHeader" class = "hiddenHeader" style="display:none">
+      <h3 id = "hiddenHeaderTitle">Click To Expand Header</h3>
+    </div>
+<!-- ====================================== -->
+    <nav id="navSection" class="navSection">
+      <ul id="navList">
+        <li class="navItem"><a href="index.html">Home</a></li>
+        <li class="navItem"><a href="Tutorial.html">Tutorial</a></li>
+        <li class="navItem">Download</li>
+        <li class="navItem">Support</li>
+        <li class="navItem" id = "hideHeader" onclick="HideHeader()">Hide Header Section</li>
 
-  <header class="webSiteHeader">
-    <h1 class="mainTitles">Rendezvous</h1>
-    <h6 class="mainTitles">Keeping an eye on your loved ones when you can't.</h6>
-    <button id = "loginButton" class="navItem">Login</button>
-    <button id = "createAccountButton" class="navItem"><a href="AccountForm.html">Create Account</a></button>
-  </header>
+      </ul>
+    </nav>
+        <div class="mapOptions">
+          <h2 id = "mapOptionsTitle">Map Options</h2>
+          <ul id="mapOptionComponents">
+            <li class="mapOption">Option 1</li>
+            <li class="mapOption">Option 2</li>
+            <li class="mapOption">Option 3</li>
+            <li class="mapOption">Option 4</li>
+          </ul>
+        </div>
+          <div id="mainMap">
+        </div>
+    </div>
+    <script>
+        var myMap, mainWindow;
+      function initMap() {
+        myMap = new google.maps.Map(document.getElementById('mainMap'), {
+          center: new google.maps.LatLng(41.881832 , -87.623177 ),
+          zoom: 7});
+        mainWindow = new google.maps.mainWindow;
 
-  <nav id = "navSection" class="navSection">
-    <ul id="navList">
-      <li class="navItem"><a href="index.html">Home</a></li>
-      <li class="navItem"><a href="Tutorial.html">Tutorial</a></li>
-      <li class="navItem">Download</li>
-      <li class="navItem">Support</li>
-    </ul>
-  </nav>
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var thisPosition = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
 
-  <main class="intro">
-    <section id="mainSection">
-      <article id="aboutArticle">
-        <h4 id="aboutTitle">About This Project</h4>
-          <p id = "aboutContent">
-            Rendezvous is a navigation application with a unique feature. Users enter their current location and destination either manually or with GPS
-            and their travel time and progress will be monitored. If a user does not check in to their destination and a certain amount of time goes by then
-            emergency contacts will automatically be notified.
-          </p>
-      </article>
-    </section>
-  </main>
-  </div>
+            mainWindow.setPosition(thisPosition);
+            mainWindow.setContent('Location found.');
+            mainWindow.open(myMap);
+            myMap.setCenter(thisPosition);
+          }, function() {
+            handleLocationError(true, mainWindow, myMap.getCenter());
+          });
+        } else {
+
+          handleLocationError(false, mainWindow, myMap.getCenter());
+        }
+      }
+      function handleLocationError(browserHasGeolocation, mainWindow, thisPosition) {
+        mainWindow.setPosition(thisPosition);
+        mainWindow.setContent(browserHasGeolocation ?
+          'Error: The Location did not work.' :
+          'Error: Your browser does not support Location API.');
+        mainWindow.open(myMap);
+      }
+    </script>
+    <script>
+    function setUpEvents(){
+      document.getElementById("hideHeader").addEventListener("click", hideHeaderFunction);
+      function hideHeaderFunction(){
+        document.getElementById("webSiteHeader").style.display = "none";
+        document.getElementById("navSection").style.display = "none";
+        document.getElementById("hiddenHeader").style.display = "block";
+        document.getElementById("mainMap").classList.add("verticallyExpandedMap");
+        google.maps.event.trigger(mainMap, 'resize');
+        setTimeout(initMap, 100);
+      }
+    }
+      window.onload = function(){
+        setUpEvents();
+      }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?AIzaSyCKef-KhLOrQtq7QJSR_8eC53u0f7A1Hds&callback=initMap">
+    </script>
 </body>
 
 </html>
