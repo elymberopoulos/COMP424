@@ -1,0 +1,167 @@
+.wrapper{
+  width: 475px;
+  margin: 0 auto;
+  height: auto;
+  margin-top: 7%;
+
+
+  /* margin-left: auto;
+margin-right: auto; */
+/* display: block; */
+}
+body{
+  background-color: darkred;
+
+}
+p{
+  font-size: 20px;
+  color: white;
+  text-align: center;
+}
+table{
+    width: 475px;
+    margin: 0 auto;
+    height: auto;
+
+}
+table img{
+  margin-left: auto;
+margin-right: auto;
+display: block;
+
+}
+form{
+  width: 512px;
+  background-color: #aaaaaa;
+}
+
+input[type=text] {
+    width: 457px;
+    padding: 5px;
+    margin: 15px;
+    height: 25px;
+    background-image: url('Icons/Name.png');
+    /* background-size:10%; */
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size:8%;
+    border-radius: 5px;
+    font-size: 15px;
+    border: 1px solid #67878d;
+    font-family: sans-serif;
+
+    text-align: center;
+
+
+}
+input[type=text]:hover{
+    width: 457px;
+    padding: 5px;
+    margin: 15px;
+    height: 25px;
+    background-image: url('Icons/Name.png');
+    /* background-size:10%; */
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size:9%;
+    font-size: 15px;
+
+    border: 1px solid red;
+
+    text-align: center;
+
+
+}
+input[type=email] {
+    width: 457px;
+    padding: 5px;
+    margin: 15px;
+    height: 25px;
+    background-image: url('Icons/Email.png');
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size:7%;
+
+    border-radius: 5px;
+    font-size: 15px;
+    border: 1px solid #67878d;
+    font-family: sans-serif;
+
+    text-align: center;
+}
+input[type=email]:hover {
+    width: 457px;
+    padding: 5px;
+    margin: 15px;
+    height: 25px;
+    background-image: url('Icons/Email.png');
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size:8%;
+
+    border-radius: 5px;
+    font-size: 15px;
+    border: 1px solid red;
+    font-family: sans-serif;
+
+    text-align: center;
+}
+input[type=password] {
+    width: 200px;
+    padding: 5px;
+    margin: 15px;
+    height: 25px;
+    background-image: url('Icons/Password.png');
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size:15%;
+    border-radius: 5px;
+    font-size: 15px;
+    border: 1px solid #67878d;
+    font-family: sans-serif;
+
+    text-align: center;
+}
+input[type=password]:hover {
+    width: 200px;
+    padding: 5px;
+    margin: 15px;
+    height: 25px;
+    background-image: url('Icons/Password.png');
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size:16%;
+    border-radius: 5px;
+    font-size: 15px;
+    border: 1px solid red;
+    font-family: sans-serif;
+
+    text-align: center;
+}
+input[type=submit]{
+    width: 150px;
+    padding: 5px;
+    margin: 15px;
+    height: 40px;
+    color: white;
+    background-color: #2584a2;
+    border-radius: 50px;
+    border-width: 0px;
+    background-size:contain;
+    background-repeat: no-repeat;
+
+}
+input[type=submit]:hover{
+    width: 150px;
+    padding: 5px;
+    margin: 15px;
+    height: 40px;
+    color: white;
+    font-size: 12px;
+    background-color: darkred;
+    border-radius: 50px;
+    border-width: 0px;
+    background-size:contain;
+    background-repeat: no-repeat;
+
+}

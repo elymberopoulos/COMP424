@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" >
+      var filter = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$/;
+    function checkName(value)
+    {
+      //for name
+      if(document.getElementById('username').value==null || myform.username.value.length==0)
+      {
+         document.getElementById('errorname').innerHTML="Invalid Username";
+      }else{
+        document.getElementById('errorname').innerHTML="";
+      }
+    }
+    function checkEmail (value){
+      if(document.getElementById('email').value==null || myform.email.value.length==0)
+      {
+         document.getElementById('erroremail').innerHTML="Empty Email";
+      }else if (!filter.test(myform.email.value)) {
+        document.getElementById('erroremail').innerHTML="Invalid Email";
+  }
+
+      else{
+        document.getElementById('erroremail').innerHTML="";
+      }
+
+    }
+    function checkPassword(value){
+      if(document.getElementById('password').value==null || myform.password.value.length==0)
+      {
+         document.getElementById('errorpassword').innerHTML="Empty Password";
+      }else{
+        document.getElementById('errorpassword').innerHTML="";
+      }
+
+    }
+    function checkcPassword(value){
+      if(document.getElementById('cpassword').value==null || myform.cpassword.value.length==0)
+      {
+         document.getElementById('errorcpassword').innerHTML="Empty Password";
+      }else if(myform.cpassword.value != myform.password.value){
+        document.getElementById('errorcpassword').innerHTML="Password Doesnt Match";
+        document.getElementById('errorpassword').innerHTML="Password Doesnt Match";
+      }else{
+        document.getElementById('errorcpassword').innerHTML="";
+        document.getElementById('errorpassword').innerHTML="";
+      }
+
+    }
+
+
+      // //for e-mail
+      // if(document.getElementById('email').value==null || myform.email.value.length==0)
+      // {
+      //    document.getElementById('erroremail').innerHTML="Invalid Email";
+      // }else{
+      //   document.getElementById('erroremail').innerHTML="";
+      // }
+      //
+      // //for password
+      //
+      // if(document.getElementById('password').value==null || myform.password.value.length==0)
+      // {
+      //    document.getElementById('errorpassword').innerHTML="Empty Password";
+      // }else{
+      //   document.getElementById('errorpassword').innerHTML="";
+      // }
+      // //for confirm Password
+      //
+      // if(document.getElementById('cpassword').value==null || myform.cpassword.value.length==0)
+      // {
+      //    document.getElementById('errorcpassword').innerHTML="Empty Password";
+      // }else if(myform.cpassword.value != myform.password.value){
+      //   document.getElementById('errorcpassword').innerHTML="Password Doesnt Match";
+      //   document.getElementById('errorpassword').innerHTML="Password Doesnt Match";
+      // }else{
+      //   document.getElementById('errorcpassword').innerHTML="";
+      //   document.getElementById('errorpassword').innerHTML="";
+      // }
+
+
+    // }
+
+    </script>
+
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+<link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+
+
+    <div class="wrapper">
+      <form class=""  method="post" name="myform">
+        <table border="0">
+          <tr>
+            <td colspan="2"> <p id="demo"></p></td>
+          </tr>
+          <tr>
+            <td colspan="2">  <img src="Icons/Profile.png" alt="Profile" width=30% align=center>  </td>
+          </tr>
+          <tr>
+            <td colspan="2">  <input id="username" name="username" type="text"  placeholder="Username"  max="10" onblur="checkName(this.value)"> <br><span id="errorname" style="color:red;margin-left:20px;"></span></td>
+          </tr>
+          <tr>
+            <td colspan="2">  <input id="email" name="email" type="email" placeholder="Email" onblur="checkEmail(this.value)"> <br><span id="erroremail" style="color:red;margin-left:20px;"></span>  </td>
+          </tr>
+          <tr>
+            <td>  <input id="password" name="password" type="password" placeholder="Password" onblur="checkPassword(this.value)"> <br><span id="errorpassword" style="color:red;margin-left:20px;"></span> </td>
+              <td>  <input  id="cpassword" name="cpassword" type="password"  placeholder="Confirm Password" onblur="checkcPassword(this.value)">  <br><span id="errorcpassword" style="color:red;margin-left:20px;"></span></td>
+          </tr>
+          <tr>
+            <td>  <input type="submit" name="" value="Sign Me Up" onclick="myFunction()">  </td>
+          </tr>
+        </table>
+
+      </form>
+
+    </div>
+
+  </body>
+</html>
