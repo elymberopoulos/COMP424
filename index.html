@@ -13,10 +13,10 @@
 <body>
   <div class="wrapper">
     <header id = "webSiteHeader" class="webSiteHeader">
-      <h1 id="mainTitle1">Rendezvous</h1>
-      <h4 id="mainTitle2">Keeping an eye on your loved ones when you can't.</h4>
-      <button id = "loginButton">Login</button>
-      <button id = "createAccountButton"><a href="AccountForm.html">Create Account</a></button>
+      <h1 class="mainTitles">Rendezvous</h1>
+      <h6 class="mainTitles">Keeping an eye on your loved ones when you can't.</h6>
+      <button id = "loginButton" class="navItem"><a href="login.html">Login</a></button>
+      <button id = "createAccountButton" class="navItem"><a href="AccountForm.html">Create Account</a></button>
     </header>
 <!-- DISPLAY THIS HEADER ON FUNCTION CLICK -->
     <div id = "hiddenHeader" class = "hiddenHeader" style="display:none">
@@ -27,8 +27,8 @@
       <ul id="navList">
         <li class="navItem"><a href="index.html">Home</a></li>
         <li class="navItem"><a href="Tutorial.html">Tutorial</a></li>
-        <li class="navItem">Download</li>
-        <li class="navItem">Support</li>
+        <li class="navItem"><a href="download.html">Download</a></li>
+        <li class="navItem"><a href="support.html">Support</a></li>
         <li class="navItem" id = "hideHeader" onclick="HideHeader()">Hide Header Section</li>
 
       </ul>
@@ -36,10 +36,10 @@
         <div class="mapOptions">
           <h2 id = "mapOptionsTitle">Map Options</h2>
           <ul id="mapOptionComponents">
-            <li class="mapOption">Option 1</li>
-            <li class="mapOption">Option 2</li>
-            <li class="mapOption">Option 3</li>
-            <li class="mapOption">Option 4</li>
+            <li class="mapOption">Show All Employee Locations</li>
+            <li class="mapOption">Enter New Route</li>
+            <li class="mapOption">Estimate Route</li>
+            <li class="mapOption">Return Home</li>
           </ul>
         </div>
           <div id="mainMap">
