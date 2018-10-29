@@ -96,7 +96,8 @@ body{
   font-size: 50px;
 }
 .loginform{
-  grid-column: 5/10;
+  background-color: #034f8b;
+  grid-column: 4/10;
   grid-row: 5/9;
   font-size: 25px;
 }
@@ -124,12 +125,72 @@ body{
   grid-row: 3/11;
 }
 .mapOption{
+  width: 100%;
+  background: transparent;
+  color: white;
+  margin-right: 10%;
+  padding-left: 4%;
   font-size: 24px;
   margin-bottom: 7%;
+  list-style-type: none;
+  border: 2px solid teal;
 }
+/* MAP OPTIONS*/
 #mapOptionsTitle{
   text-align: center;
 }
+.mapOptionsAccordion {
+    border: 2px solid teal;
+    background-color: #0099e6;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+.mapOptionsAccordion:hover {
+    background-color: #D5DBDB;
+    border: 2px solid #00ffff;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+.activeMapAccordion {
+    background-color: #00ffff;
+    border: 2px solid #00ffff;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.mapOptionsAccordion:hover .mapOptionsAccordion:active {
+    background-color: #ccc;
+}
+
+.mapOptionsPanel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+/* END OF MAP OPTIONS*/
 #mainMap{
   grid-column: 3/13;
   grid-row: 3/11;
@@ -157,8 +218,8 @@ body{
 .loginForm{
   padding-top: 15%;
   background-color: #034f8b;
-  grid-column: 6/9;
-  grid-row: 3/7;
+  grid-column: 5/9;
+  grid-row: 1/8;
   background-color: transparent;
 }
 #welcomeTag{
