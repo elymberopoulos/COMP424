@@ -97,9 +97,10 @@ body{
 }
 .loginform{
   background-color: #034f8b;
-  grid-column: 4/10;
+  grid-column: 5/10;
   grid-row: 5/9;
   font-size: 25px;
+  background: transparent;
 }
 #comment{
   grid-column: 6/11;
@@ -298,3 +299,62 @@ h1.login-title {
   text-decoration:none;
   font-size:13px;
 }
+.tutorialOptionsAccordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+.active, .tutorialOptionsAccordion:hover {
+    background-color: #ccc;
+}
+.tutorialOptionsPanel{
+  padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+    color: black;
+}
+.tutorialOptions{
+  grid-column: 6/7;
+  grid-row: 5/7;
+}
+#myInput {
+
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+#faq{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    color:white;
+  }
+  #faq li a {
+      border: 1px solid #ddd;
+      margin-top: -1px;
+      background-color: #f6f6f6;
+      padding: 12px;
+      text-decoration: none;
+      font-size: 18px;
+      color: black;
+      display: block;
+  }
+
+  #faq li a:hover:not(.header) {
+      background-color: #eee;
+  }
+  .search{
+    grid-column: 6/8;
+    grid-row: 5/auto;
+  }

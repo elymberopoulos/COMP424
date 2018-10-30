@@ -16,7 +16,7 @@
     <header class="webSiteHeader">
       <h1 class="mainTitles">Rendezvous</h1>
       <h6 class="mainTitles">Keeping an eye on your loved ones when you can't.</h6>
-      <button id = "loginButton" class="navItem"><a href="login.html">Login</a></button>
+      <button id = "loginButton" class="navItem"><a href="index.html">Login</a></button>
       <button id = "createAccountButton" class="navItem"><a href="AccountForm.html">Create Account</a></button>
     </header>
 
@@ -31,5 +31,43 @@
 
     <h2 id="section title" class="title">Support</h2>
 
+    <div class=search>
+
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for FAQs..">
+
+      <ul id="faq">
+        <li><a href="#">How Much Does the App Cost?</a></li>
+        <li><a href="#">Is This App right for me?</a></li>
+
+        <li><a href="#">Can I Change the Color Scheme?</a></li>
+        <li><a href="#">How Do I Contact the Developers?</a></li>
+
+        <li><a href="#">Will You Steal My Data?</a></li>
+        <li><a href="#">Why Do I Need An Account?</a></li>
+        <li><a href="#">Does It Work On Android And Apple?</a></li>
+      </ul>
+    </div>
+  </div>
+
   </body>
+  <script>
+function myFunction() {
+
+    var input, filter, ul, li, a, i;
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("faq");
+    li = ul.getElementsByTagName('li');
+
+
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
 </html>
