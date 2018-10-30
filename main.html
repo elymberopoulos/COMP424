@@ -67,14 +67,12 @@
           zoom: 7
         });
         mainWindow = new google.maps.mainWindow;
-
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             var thisPosition = {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
-
             myMap.setPosition(thisPosition);
             mainWindow.setContent('Location found.');
             mainWindow.open(myMap);
@@ -83,12 +81,9 @@
             handleLocationError(true, mainWindow, myMap.getCenter());
           });
         } else {
-
           handleLocationError(false, mainWindow, myMap.getCenter());
         }
-
       }
-
       function handleLocationError(browserHasGeolocation, mainWindow, thisPosition) {
         mainWindow.setPosition(thisPosition);
         mainWindow.setContent(browserHasGeolocation ?
@@ -96,7 +91,6 @@
           'Error: Your browser does not support Location API.');
         mainWindow.open(myMap);
       }
-
       function initMainPage() {
         var hideHeaderBtn = document.getElementById("hideHeader").addEventListener("click", hideHeaderFunction);
         var i;
@@ -113,8 +107,6 @@
             }
           });
         }
-
-
         function hideHeaderFunction() {
           document.getElementById("webSiteHeader").style.display = "none";
           document.getElementById("navSection").style.display = "none";
