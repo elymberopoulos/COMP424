@@ -97,9 +97,10 @@ body{
 }
 .loginform{
   background-color: #034f8b;
-  grid-column: 4/10;
+  grid-column: 5/10;
   grid-row: 5/9;
   font-size: 25px;
+  background: transparent;
 }
 #comment{
   grid-column: 6/11;
@@ -302,12 +303,14 @@ h1.login-title {
   text-decoration:none;
   font-size:13px;
 }
+
 /* TUTORIAL PAGE*/
 .tutorialContent{
   grid-column: 5/10;
   grid-row: 4/10;
   background-color: rgb(13, 123, 164, 0.7);
 }
+
 .tutorialOptionsAccordion {
     background-color: #eee;
     color: #444;
@@ -319,7 +322,9 @@ h1.login-title {
     outline: none;
     transition: 0.4s;
 }
+
 .tutorialOptionsAccordion:active .tutorialOptionsAccordion:hover {
+
     background-color: #ccc;
 }
 .tutorialOptionsPanel{
@@ -330,7 +335,9 @@ h1.login-title {
     color: black;
 }
 .tutorialOptions{
+
   grid-column: 6/9;
+
   grid-row: 5/7;
 }
 #myInput {
@@ -367,6 +374,7 @@ h1.login-title {
     grid-column: 6/8;
     grid-row: 5/auto;
   }
+
 
   .twitter-button {
   margin-top: 5px;
@@ -410,3 +418,4 @@ h1.login-title {
   cursor: pointer;
   outline:0;
 }
+
