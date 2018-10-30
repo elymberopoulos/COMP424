@@ -17,7 +17,7 @@
 
   <header class="webSiteHeader">
     <h1 class="mainTitles">Rendezvous</h1>
-    <h6 class="mainTitles">Keeping an eye on your loved ones when you can't.</h6>
+    <h3 class="mainTitles">Keeping an eye on your loved ones when you can't.</h3>
     <button id = "loginButton" class="navItem"><a href="index.html">Login</a></button>
     <button id = "createAccountButton" class="navItem"><a href="AccountForm.html">Create Account</a></button>
   </header>
@@ -30,6 +30,8 @@
       <li class="navItem"><a href="support.html">Support</a></li>
     </ul>
   </nav>
+
+<div class = "tutorialContent">
 
   <h2 id="section title" class="title">Tutorial</h2>
     <p id="comment">In case you need some extra help, here are a few resources to get you started.</p>
@@ -63,6 +65,11 @@
         </ul>
       </div>
     </div>
+  </div>
+
+
+
+
 
 
 
@@ -71,19 +78,20 @@
   </div>
 
   <script>
-var acc = document.getElementsByClassName("tutorialOptionsAccordion");
-var i;
 
-for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-        } else {
-            panel.style.display = "block";
-        }
-    });
-}
+  var acc = document.getElementsByClassName("tutorialOptionsAccordion");
+  var i;
+  for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (panel.style.display === "block") {
+              panel.style.display = "none";
+          } else {
+              panel.style.display = "block";
+          }
+      });
+  }
+
 </script>
 </body>
