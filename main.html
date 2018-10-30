@@ -15,7 +15,7 @@
     <header id="webSiteHeader" class="webSiteHeader">
       <h1 class="mainTitles">Rendezvous</h1>
       <h3 class="mainTitles">Keeping an eye on your loved ones when you can't.</h3>
-      <button id = "loginButton" class="navItem"><a href="login.html">Login</a></button>
+      <button id = "loginButton" class="navItem"><a href="index.html">Login</a></button>
       <button id = "createAccountButton" class="navItem"><a href="AccountForm.html">Create Account</a></button>
     </header>
     <!-- DISPLAY THIS HEADER ON FUNCTION CLICK -->
@@ -55,7 +55,7 @@
         <button type = "submit">SUBMIT</button>
       </div>
     </div>
-    <script>
+     <script>
       function initMap() {
         myMap = new google.maps.Map(document.getElementById('mainMap'), {
           center: new google.maps.LatLng(41.881832, -87.623177),
@@ -70,7 +70,7 @@
               lng: position.coords.longitude
             };
 
-            mainWindow.setPosition(thisPosition);
+            myMap.setPosition(thisPosition);
             mainWindow.setContent('Location found.');
             mainWindow.open(myMap);
             myMap.setCenter(thisPosition);
@@ -81,6 +81,7 @@
 
           handleLocationError(false, mainWindow, myMap.getCenter());
         }
+
       }
 
       function handleLocationError(browserHasGeolocation, mainWindow, thisPosition) {
@@ -121,8 +122,11 @@
         initMainPage();
       }
     </script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?AIzaSyADrTPp87D6OAgTTLy2SZ8UdWukxXdKFnA&callback=initMap">
     </script>
+
 </body>
 
 </html>
