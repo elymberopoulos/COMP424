@@ -1,0 +1,5 @@
+*Delete Login page and js files
+*Remove js from index.html and put it into its on fail
+*Import route information JSON from mobile users
+*Show users in map Options
+*Allow user to drilldown on one user and return current location, time to destination,
