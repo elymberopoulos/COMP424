@@ -1,10 +1,11 @@
-var map, infoWindow;
+
 function initMap() {
-  map = new google.maps.Map(document.getElementById('mainMap'), {
+  
+  var map = new google.maps.Map(document.getElementById('mainMap'), {
     center: {lat: -34.397, lng: 150.644},
     zoom: 6
   });
-  infoWindow = new google.maps.InfoWindow;
+  var infoWindow = new google.maps.InfoWindow;
 
 
   if (navigator.geolocation) {
