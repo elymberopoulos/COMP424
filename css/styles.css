@@ -21,7 +21,7 @@ body{
   display: inline-block;
 
 }
-#loginButton{
+#logoutButton{
   float: right;
   margin-top: 35px;
   width: 120px;
@@ -354,13 +354,20 @@ h1.login-title {
     border: 1px solid #ddd;
     margin-bottom: 12px;
 }
-#faq{
-    list-style-type: none;
+.searchList{
+  list-style-type: none;
+
+}
+
+.search{
     padding: 0;
     margin: 0;
     color:white;
-  }
-  #faq li a {
+    grid-column: 6/8;
+    grid-row: 5/auto;
+    }
+
+  .search li a {
       border: 1px solid #ddd;
       margin-top: -1px;
       background-color: #f6f6f6;
@@ -369,20 +376,16 @@ h1.login-title {
       font-size: 18px;
       color: black;
       display: block;
+
   }
 
-  #faq li a:hover:not(.header) {
+  .search li a:hover:not(.header) {
       background-color: #eee;
   }
   #supportVideo{
     grid-column: 1/5;
     grid-row: 5/10;
   }
-  .search{
-    grid-column: 6/8;
-    grid-row: 5/auto;
-  }
-
 
   .twitter-button {
   margin-top: 5px;
@@ -425,4 +428,17 @@ h1.login-title {
   border-radius: 5px;
   cursor: pointer;
   outline:0;
+}
+
+.SupportHeader{
+  grid-column: 6/8;
+  grid-row: 2/3;
+}
+.SupportHeader #section-title{
+  text-align: center;
+  padding-top: 30px;
+}
+
+#list2{
+  float:right;
 }
