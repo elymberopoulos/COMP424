@@ -9,8 +9,10 @@
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css?family=Rationale" rel="stylesheet">
                                   <!-- DONT FORGET TO ENTER API KEY -->
-  <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=--HERE--&callback=initMap"></script> -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtc7Eh0C7FC5QwcJote-cVagezJNZAmMk&callback=initMap"></script>
   <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+
   </head>
 
 <body>
@@ -18,8 +20,8 @@
     <header id="webSiteHeader" class="webSiteHeader">
       <h1 class="mainTitles">Rendezvous</h1>
       <h3 class="mainTitles">Keeping an eye on your loved ones when you can't.</h3>
-      <button id = "loginButton" class="navItem"><a href="index.html">Login</a></button>
-      <button id = "createAccountButton" class="navItem"><a href="AccountForm.html">Create Account</a></button>
+      <button id = "logoutButton" onclick="mainApp.logOut()" class="navItem">Log Out</button>
+
     </header>
     <!-- DISPLAY THIS HEADER ON FUNCTION CLICK -->
     <div id="hiddenHeader" class="hiddenHeader" style="display:none">
@@ -63,9 +65,9 @@
         </ul>
       </div>
     </div>
-
+    <script src=firebase.js></script>
     <script src="map.js"></script>
 		<script src="main.js"></script>
-</body>
+  </body>
 
 </html>
