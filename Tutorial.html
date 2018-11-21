@@ -18,9 +18,7 @@
   <header class="webSiteHeader">
     <h1 class="mainTitles">Rendezvous</h1>
     <h3 class="mainTitles">Keeping an eye on your loved ones when you can't.</h3>
-    <button id = "loginButton" class="navItem"><a href="index.html">Login</a></button>
-    <button id = "createAccountButton" class="navItem"><a href="AccountForm.html">Create Account</a></button>
-  </header>
+    <button id = "logoutButton" onclick="mainApp.logOut()" class="navItem">Log Out</button>
 
   <nav id = "navSection" class="navSection">
     <ul id="navList">
@@ -75,22 +73,7 @@
 
 
   </div>
-
-  <script>
-
-  var acc = document.getElementsByClassName("tutorialOptionsAccordion");
-  var i;
-  for (i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function() {
-          this.classList.toggle("active");
-          var panel = this.nextElementSibling;
-          if (panel.style.display === "block") {
-              panel.style.display = "none";
-          } else {
-              panel.style.display = "block";
-          }
-      });
-  }
-
-</script>
+  <script src="firebase.js"></script>
+  <script src="tutorial.js"></script>
 </body>
+</html>
