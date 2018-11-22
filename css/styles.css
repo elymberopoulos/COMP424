@@ -27,6 +27,8 @@ body{
   width: 120px;
   background-color: #0099e6;
   margin-left: 2px;
+  outline: none;
+  border: none;
 }
 
 #createAccountButton{
