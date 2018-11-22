@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/styles.css">
   <link href="https://fonts.googleapis.com/css?family=Rationale" rel="stylesheet">
                                   <!-- DONT FORGET TO ENTER API KEY -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtc7Eh0C7FC5QwcJote-cVagezJNZAmMk&callback=initMap"></script>
@@ -46,12 +46,13 @@
       <div class="mapOptionsPanel">
         <input type="text" placeholder="ENTER VALUE">
         <button type = "submit">SUBMIT</button>
+        <button type = "submit">SUBMIT</button>
       </div>
 
       <button class="mapOptionsAccordion">Find User By Name</button>
       <div class="mapOptionsPanel">
         <input type="text" placeholder="ENTER VALUE">
-        <button type = "submit">SUBMIT</button>
+        <button type = "submit" id = "submitNameSearch">SUBMIT</button>
       </div>
 
       <button class="mapOptionsAccordion">List Of Users</button>
@@ -65,9 +66,9 @@
         </ul>
       </div>
     </div>
-    <script src=firebase.js></script>
-    <script src="map.js"></script>
-		<script src="main.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/map.js"></script>
+		<script src="js/main.js"></script>
   </body>
 
 </html>

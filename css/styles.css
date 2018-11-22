@@ -2,7 +2,7 @@ html{
   height: 100%;
   width: 100%;
   background-image: linear-gradient(125deg, black, #3399ff);
-  background-image: url("res/images/cyber.jpg");
+  background-image: url("../res/images/cyber.jpg");
 
 }
 body{
@@ -27,6 +27,8 @@ body{
   width: 120px;
   background-color: #0099e6;
   margin-left: 2px;
+  outline: none;
+  border: none;
 }
 
 #createAccountButton{
@@ -49,7 +51,7 @@ body{
 .navItem{
   display: inline;
   margin: 0px;
-  margin-right: 2px;-
+  margin-right: 2px;
   margin-right: 2px;
   padding: 5px;
   background-color: #0099e6;
