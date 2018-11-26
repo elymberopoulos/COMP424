@@ -1,17 +1,61 @@
 function initMap() {
   mapLocate();
+  
+
+  //FIREBASE
+  const db = firebase.database();
+  const usersDBEndPoint = db.ref("users");
 
   //EVENT LISTENERS HERE
-  var refreshOutput = document.getElementById("submitNameSearch").addEventListener("click", refreshMarkers);
+  var refreshOutput = document.getElementById("submitNameSearch").addEventListener("click", outputUsers);
+  var findAllUsersBtn = document.getElementById("findAllUsersBtn").addEventListener("click", refreshDatabaseValues);
 
   ////////////////////////////////////////////////////////////////////////////
 
-  var map = new google.maps.Map(document.getElementById('mainMap'), {
-    center: {
-      lat: -34.397,
-      lng: 150.644
+  // var userLocations = [
+
+  //   {
+  //     lat: 41.9999,
+  //     lng: -87.6578
+  //   },
+  //   {
+  //     lat: 41.878876,
+  //     lng: -87.635918
+  //   },
+  //   {
+  //     lat: 41.948437,
+  //     lng: -87.655334
+  //   },
+  //   {
+  //     lat: 43.092461,
+  //     lng: -79.047150
+  //   },
+  // ]
+
+  // FIREBASE TEST ARRAY
+
+  var testArray = [{
+    "Derek Smith": {
+      lat: 41.9999,
+      lng: -87.6578
     },
-    zoom: 6
+    "Anne Hathaway": {
+      lat: 41.9689,
+      lng: -87.6598
+    },
+    "Ryan Reynolds": {
+      lat: 41.9589,
+      lng: -87.6498
+    }
+  }];
+
+  var users = [];
+
+
+  /////////////////////////////////////////////////////////////////////////////////
+
+  var map = new google.maps.Map(document.getElementById('mainMap'), {
+    zoom: 9
   });
   var infoWindow = new google.maps.InfoWindow;
 
@@ -45,23 +89,37 @@ function initMap() {
   }
 
   function refreshDatabaseValues() {
-    db.ref('users')
-      .once('value')
+    users.length = 0;
+    db.ref("users/").once('value')
       .then((snapshot) => {
-        const users = [];
         snapshot.forEach((siteSnapshot) => {
+          // console.log(siteSnapshot.key);
+          // console.log(siteSnapshot.val());
           users.push({
             id: siteSnapshot.key,
             ...siteSnapshot.val()
           });
         });
-        console.log("data changed");
+        console.log("users array = ", users);
+        outputUsers(users);
+      })
+      .catch((error) =>{
+        console.log("error is: " + error)
       });
-
+  }
+  function outputUsers(users){
+    console.log("function triggered");
+    var userLength = users.legnth;
+    var i
+    for(i = 0; i < userLength; i++){
+      // console.log(users[i].id);
+      // console.log(users[i].location[0].lat);
+      // console.log(users[i].location[1].lng);
+    }
   }
 
   function refreshMarkers() {
-    var markers = users.map(function (location, i) {
+    var markers = userLocations.map(function (location, i) {
       return new google.maps.Marker({
         position: location,
       });
@@ -71,24 +129,6 @@ function initMap() {
       imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
     });
   }
-  var users = [
 
-    {
-      lat: 41.9999,
-      lng: -87.6578
-    },
-    {
-      lat: 41.878876,
-      lng: -87.635918
-    },
-    {
-      lat: 41.948437,
-      lng: -87.655334
-    },
-    {
-      lat: 43.092461,
-      lng: -79.047150
-    },
-  ]
 }
 initMap()
