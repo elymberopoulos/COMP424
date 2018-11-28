@@ -444,3 +444,57 @@ h1.login-title {
 #list2{
   float:right;
 }
+
+li{
+  text-align: left;
+  
+}
+#userPanel{
+  overflow-y: scroll;
+  height: 35%;
+  width: 100%;
+  align-items: center;
+}
+.userNode{
+  align-content: left;
+  align-self: left;
+  text-align: left;
+  color: black;
+  border: black;
+  border-width: 1px;
+  width: 100%;
+}
+.userNode:hover{
+  align-content: left;
+  align-self: left;
+  text-align: left;
+  color: black;
+  border: black;
+  border-width: 1px;
+  width: 100%;
+  background-color: rgb(133, 215, 253)
+}
+.userNode2{
+  align-content: left;
+  align-self: left;
+  text-align: left;
+  color: black;
+  border: black;
+  border-width: 1px;
+  width: 100%;
+  background-color: rgb(226, 226, 226);
+}
+.userNode2:hover{
+  align-content: left;
+  align-self: left;
+  text-align: left;
+  color: black;
+  border: black;
+  border-width: 1px;
+  width: 100%;
+  background-color: rgb(133, 215, 253)
+}
+.accordionButton{
+  width: 100%;
+  align-self: center;
+}

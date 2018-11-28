@@ -1,6 +1,6 @@
 function initMap() {
   mapLocate();
-  
+
 
   //FIREBASE
   const db = firebase.database();
@@ -9,47 +9,20 @@ function initMap() {
   //EVENT LISTENERS HERE
   var refreshOutput = document.getElementById("submitNameSearch").addEventListener("click", outputUsers);
   var findAllUsersBtn = document.getElementById("findAllUsersBtn").addEventListener("click", refreshDatabaseValues);
+  var findAllUsersBtn = document.getElementById("monitorAllUsersBtn").addEventListener("click", monitorDatabaseValues);
+  var clearUserDataBtn = document.getElementById("clearUserDataBtn").addEventListener("click", clearUserData);
+  var monitoring = false;
 
-  ////////////////////////////////////////////////////////////////////////////
 
-  // var userLocations = [
-
-  //   {
-  //     lat: 41.9999,
-  //     lng: -87.6578
-  //   },
-  //   {
-  //     lat: 41.878876,
-  //     lng: -87.635918
-  //   },
-  //   {
-  //     lat: 41.948437,
-  //     lng: -87.655334
-  //   },
-  //   {
-  //     lat: 43.092461,
-  //     lng: -79.047150
-  //   },
-  // ]
-
-  // FIREBASE TEST ARRAY
-
-  var testArray = [{
-    "Derek Smith": {
-      lat: 41.9999,
-      lng: -87.6578
-    },
-    "Anne Hathaway": {
-      lat: 41.9689,
-      lng: -87.6598
-    },
-    "Ryan Reynolds": {
-      lat: 41.9589,
-      lng: -87.6498
-    }
-  }];
+  var userOutputList = document.getElementById("listOfUsers");
+  var userPanel = document.getElementById("userPanel");
 
   var users = [];
+  var userLocations = [];
+  ////////////////////////////////////////////////////////////////////////////
+
+
+
 
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -68,7 +41,7 @@ function initMap() {
         };
 
         infoWindow.setPosition(pos);
-        infoWindow.setContent('Location found.');
+        infoWindow.setContent('Your Location');
         infoWindow.open(map);
         map.setCenter(pos);
       }, function () {
@@ -93,42 +66,117 @@ function initMap() {
     db.ref("users/").once('value')
       .then((snapshot) => {
         snapshot.forEach((siteSnapshot) => {
-          // console.log(siteSnapshot.key);
-          // console.log(siteSnapshot.val());
+          console.log(siteSnapshot.key);
+          console.log(siteSnapshot.val());
           users.push({
             id: siteSnapshot.key,
             ...siteSnapshot.val()
           });
         });
         console.log("users array = ", users);
-        outputUsers(users);
+        //outputUsers();
       })
-      .catch((error) =>{
+      .catch((error) => {
         console.log("error is: " + error)
       });
   }
-  function outputUsers(users){
-    console.log("function triggered");
-    var userLength = users.legnth;
-    var i
-    for(i = 0; i < userLength; i++){
-      // console.log(users[i].id);
-      // console.log(users[i].location[0].lat);
-      // console.log(users[i].location[1].lng);
+
+  function monitorDatabaseValues() {
+    console.log("monitor DB function clicked");
+    if (!monitoring) {
+      console.log("Monitoring DB now.");
+      monitoring = true;
+      db.ref('users/').on('child_changed', (snapshot) => {
+        users.length = 0;
+        console.log('child changed = ', snapshot.key, snapshot.val());
+        snapshot.forEach((siteSnapshot) => {
+          console.log(siteSnapshot.key);
+          console.log(siteSnapshot.val());
+          users.push({
+            id: siteSnapshot.key,
+            ...siteSnapshot.val()
+          });
+        });
+        console.log("users array = ", users);
+      });
+    } else {
+      console.log("DB monitoring off.")
+      monitoring = false;
+      db.ref().off();
     }
   }
 
-  function refreshMarkers() {
+  function clearUserData() {
+    console.log("Clear data function clicked.");
+    userLocations.length = 0;
+    markerCluster.setMap(null);
+
+
+    while (userPanel.hasChildNodes()) {
+      userPanel.removeChild(userPanel.firstChild);
+    }
+  }
+
+  function outputUsers() {
+    userLocations.length = 0;
+    //console.log("function triggered");
+    while (userPanel.hasChildNodes()) {
+      userPanel.removeChild(userPanel.firstChild);
+    }
+
+    var userLength = users.length;
+    var outputDiv = document.createElement("div");
+    console.log("USER LENGTH " + userLength);
+
+    for (var i = 0; i < userLength; i++) {
+
+      var id = users[i].id;
+      var userLat = users[i].location.lat;
+      var userLng = users[i].location.lng;
+      var node = document.createElement("div");
+
+      var Latlng = new google.maps.LatLng(userLat, userLng);
+      var marker = new google.maps.Marker({
+        position: Latlng,
+        label: id
+      });
+      userLocations.push(marker);
+
+      node.classList.add("userNode");
+
+      var idTextNode = document.createTextNode(id);
+      var latTextNode = document.createTextNode("LAT: " + userLat);
+      var lngTextNode = document.createTextNode("LNG: " + userLng);
+      node.appendChild(idTextNode);
+      node.appendChild(document.createElement("br"));
+      node.appendChild(latTextNode);
+      node.appendChild(document.createElement("br"));
+      node.appendChild(lngTextNode);
+      node.addEventListener("click", showLocation);
+
+      userPanel.appendChild(node);
+
+    }
+    var markerCluster = new MarkerClusterer(map, userLocations, {
+      imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+    });
+  }
+
+  function displayMarkers() {
     var markers = userLocations.map(function (location, i) {
       return new google.maps.Marker({
         position: location,
       });
     });
 
-    var markerCluster = new MarkerClusterer(map, markers, {
-      imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
-    });
   }
 
+  function showLocation() {
+    alert("node clicked \n" + this.innerText);
+
+  }
 }
+
+
+
 initMap()

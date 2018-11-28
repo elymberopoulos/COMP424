@@ -33,8 +33,6 @@
         <li class="navItem"><a href="Tutorial.html">Tutorial</a></li>
         <li class="navItem"><a href="download.html">Download</a></li>
         <li class="navItem"><a href="support.html">Support</a></li>
-        <li class="navItem" id="hideHeader" onclick="HideHeader()">Hide Header Section</li>
-
       </ul>
     </nav>
     <div id="mainMap"></div>
@@ -43,9 +41,11 @@
 
       <button class="mapOptionsAccordion">Enter Group Search</button>
       <div class="mapOptionsPanel">
-        <input type="text" placeholder="ENTER VALUE">
-        <button type = "submit">SUBMIT</button>
-        <button id = "findAllUsersBtn" type = "submit">Find All Users</button>
+        <button class = "accordionButton" id = "findAllUsersBtn" type = "submit">Refresh User Data</button>
+        <button class = "accordionButton" id = "monitorAllUsersBtn" type = "submit">Monitor User Data</button>
+        <button class = "accordionButton" id = "clearUserDataBtn" type = "submit">Clear User Data</button>
+
+
       </div>
 
       <button class="mapOptionsAccordion">Find User By Name</button>
@@ -55,12 +55,12 @@
       </div>
 
       <button class="mapOptionsAccordion">List Of Users</button>
-      <div class="mapOptionsPanel">
-        <ul>
+      <div class="mapOptionsPanel" id = "userPanel">
+        <!-- <ul id = "listOfUsers">
           <li>USER 1</li>
           <li>USER 2</li>
           <li>USER 3</li>
-          <li>USER 4</li>
+          <li>USER 4</li> -->
 
         </ul>
       </div>
