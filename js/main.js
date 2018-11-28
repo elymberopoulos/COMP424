@@ -1,5 +1,4 @@
 function initMainPage() {
-  var hideHeaderBtn = document.getElementById("hideHeader").addEventListener("click", hideHeaderFunction);
   var i;
   var myMap, mainWindow;
   var acc = document.getElementsByClassName("mapOptionsAccordion");
@@ -15,14 +14,6 @@ function initMainPage() {
     });
   }
 
-
-  function hideHeaderFunction() {
-    document.getElementById("webSiteHeader").style.display = "none";
-    document.getElementById("navSection").style.display = "none";
-    document.getElementById("hiddenHeader").style.display = "block";
-    document.getElementById("mainMap").classList.add("verticallyExpandedMap");
-    google.maps.event.trigger(mainMap, 'resize');
-  }
 }
 initMainPage();
 
