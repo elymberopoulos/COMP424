@@ -13,7 +13,6 @@ function initMap() {
   var clearUserDataBtn = document.getElementById("clearUserDataBtn").addEventListener("click", clearUserData);
   var monitoring = false;
 
-
   var userOutputList = document.getElementById("listOfUsers");
   var userPanel = document.getElementById("userPanel");
 
@@ -40,8 +39,8 @@ function initMap() {
           lng: position.coords.longitude
         };
 
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('Your Location');
+        //infoWindow.setPosition(pos);
+        //infoWindow.setContent('Your Location');
         infoWindow.open(map);
         map.setCenter(pos);
       }, function () {
@@ -106,17 +105,6 @@ function initMap() {
     }
   }
 
-  function clearUserData() {
-    console.log("Clear data function clicked.");
-    userLocations.length = 0;
-    markerCluster.setMap(null);
-
-
-    while (userPanel.hasChildNodes()) {
-      userPanel.removeChild(userPanel.firstChild);
-    }
-  }
-
   function outputUsers() {
     userLocations.length = 0;
     //console.log("function triggered");
@@ -133,25 +121,38 @@ function initMap() {
       var id = users[i].id;
       var userLat = users[i].location.lat;
       var userLng = users[i].location.lng;
+      var emergencyContactName = users[i].emergencyContact.name;
+      var emergencyContactNumber = users[i].emergencyContact.phone;
       var node = document.createElement("div");
 
       var Latlng = new google.maps.LatLng(userLat, userLng);
       var marker = new google.maps.Marker({
         position: Latlng,
-        label: id
+        //label: id
       });
       userLocations.push(marker);
 
       node.classList.add("userNode");
+      node.setAttribute("userName", id);
+
+      node.setAttribute("latitude", userLat);
+      node.setAttribute("longitude", userLng);
 
       var idTextNode = document.createTextNode(id);
       var latTextNode = document.createTextNode("LAT: " + userLat);
       var lngTextNode = document.createTextNode("LNG: " + userLng);
+      var contact = document.createTextNode("I.C.E.: " + emergencyContactName);
+      var contactNumber = document.createTextNode("Phone: " + emergencyContactNumber);
+
       node.appendChild(idTextNode);
       node.appendChild(document.createElement("br"));
       node.appendChild(latTextNode);
       node.appendChild(document.createElement("br"));
       node.appendChild(lngTextNode);
+      node.appendChild(document.createElement("br"));
+      node.appendChild(contact);
+      node.appendChild(document.createElement("br"));
+      node.appendChild(contactNumber);
       node.addEventListener("click", showLocation);
 
       userPanel.appendChild(node);
@@ -160,19 +161,28 @@ function initMap() {
     var markerCluster = new MarkerClusterer(map, userLocations, {
       imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
     });
+    users = [];
+    userLocations = [];
   }
 
-  function displayMarkers() {
-    var markers = userLocations.map(function (location, i) {
-      return new google.maps.Marker({
-        position: location,
-      });
-    });
+  function clearUserData() {
+    console.log("Clear data function clicked.");
+    userLocations.length = 0;
+    markerCluster.setMap(null);
 
+
+    while (userPanel.hasChildNodes()) {
+      userPanel.removeChild(userPanel.firstChild);
+    }
   }
 
   function showLocation() {
-    alert("node clicked \n" + this.innerText);
+    var Latlng = new google.maps.LatLng(this.getAttribute("latitude"), this.getAttribute("longitude"));
+    map.setCenter(Latlng);
+    map.setZoom(12);
+    infoWindow.setPosition(Latlng);
+    infoWindow.setContent(this.getAttribute("userName"));
+
 
   }
 }
