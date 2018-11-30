@@ -9,7 +9,7 @@ function initMap() {
   //EVENT LISTENERS HERE
   var refreshOutput = document.getElementById("submitNameSearch").addEventListener("click", outputUsers);
   var findAllUsersBtn = document.getElementById("findAllUsersBtn").addEventListener("click", refreshDatabaseValues);
-  var findAllUsersBtn = document.getElementById("monitorAllUsersBtn").addEventListener("click", monitorDatabaseValues);
+  //var findAllUsersBtn = document.getElementById("monitorAllUsersBtn").addEventListener("click", monitorDatabaseValues);
   var clearUserDataBtn = document.getElementById("clearUserDataBtn").addEventListener("click", clearUserData);
   var monitoring = false;
 
@@ -18,6 +18,7 @@ function initMap() {
 
   var users = [];
   var userLocations = [];
+  var markerCluster;
   ////////////////////////////////////////////////////////////////////////////
 
 
@@ -73,7 +74,6 @@ function initMap() {
           });
         });
         console.log("users array = ", users);
-        //outputUsers();
       })
       .catch((error) => {
         console.log("error is: " + error)
@@ -108,6 +108,7 @@ function initMap() {
   function outputUsers() {
     userLocations.length = 0;
     //console.log("function triggered");
+    
     while (userPanel.hasChildNodes()) {
       userPanel.removeChild(userPanel.firstChild);
     }
@@ -158,31 +159,35 @@ function initMap() {
       userPanel.appendChild(node);
 
     }
-    var markerCluster = new MarkerClusterer(map, userLocations, {
+    markerCluster = new MarkerClusterer(map, userLocations, {
       imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
     });
-    users = [];
-    userLocations = [];
   }
 
   function clearUserData() {
     console.log("Clear data function clicked.");
-    userLocations.length = 0;
-    markerCluster.setMap(null);
-
-
+    for (var i = 0; i < userLocations.length; i++ ) {
+      userLocations[i].setMap(null);
+    }
     while (userPanel.hasChildNodes()) {
       userPanel.removeChild(userPanel.firstChild);
     }
+    markerCluster.clearMarkers();  
+    users = [];
+    userLocations = [];
+
   }
 
   function showLocation() {
+
+    var id = this.getAttribute("userName");
+    var lat = this.getAttribute("latitude");
+    var lng = this.getAttribute("longitude");
     var Latlng = new google.maps.LatLng(this.getAttribute("latitude"), this.getAttribute("longitude"));
     map.setCenter(Latlng);
     map.setZoom(12);
     infoWindow.setPosition(Latlng);
-    infoWindow.setContent(this.getAttribute("userName"));
-
+    infoWindow.setContent(id + " LAT: " + lat + " LNG: " + lng);
 
   }
 }
