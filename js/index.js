@@ -74,3 +74,22 @@
 
 var googleLogin = document.getElementById('submit-login');
 googleLogin.addEventListener('click', startLogin);
+
+var mainApp = {};
+(function (){
+
+  var uid = null;
+  firebase.auth().onAuthStateChanged(function(user){
+    if (user) {
+      uid = user.uid;
+    }else{
+      uid = null;
+      window.location.replace("loggedOut.html");
+      }
+  });
+  function logOut(){
+    firebase.auth().signOut();
+    console.log("logged out");
+  }
+  mainApp.logOut = logOut;
+})();
