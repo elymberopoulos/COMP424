@@ -127,6 +127,7 @@ body{
   grid-column: 1/3;
   grid-row: 3/11;
   min-width: 25%;
+  
 }
 
 .mapOptions ul{
@@ -451,8 +452,8 @@ li{
 }
 #userPanel{
   overflow-y: scroll;
-  height: 35%;
-  width: 100%;
+  height: 55%;
+  width: 110%;
   align-items: center;
 }
 .userNode{
@@ -497,4 +498,22 @@ li{
 .accordionButton{
   width: 100%;
   align-self: center;
+}
+.userList{
+  border: 2px solid teal;
+  background-color: #2fbaff;
+  color: black;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+#userTitle{
+  text-align: center;
+  background-color: #0099e6;
+  color: black;
+  font-size: 18px;
 }
