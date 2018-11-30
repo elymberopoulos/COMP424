@@ -21,7 +21,7 @@ var mainApp = {};
       uid = user.uid;
     }else{
       uid = null;
-      window.location.replace("index.html");
+      window.location.replace("loggedOut.html");
       }
   });
   function logOut(){
