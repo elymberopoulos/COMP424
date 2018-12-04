@@ -8,56 +8,54 @@
   <title>Document</title>
   <link rel="stylesheet" href="css/styles.css">
   <link href="https://fonts.googleapis.com/css?family=Rationale" rel="stylesheet">
-                                  <!-- DONT FORGET TO ENTER API KEY -->
+  <!-- DONT FORGET TO ENTER API KEY -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtc7Eh0C7FC5QwcJote-cVagezJNZAmMk&callback=initMap"></script>
   <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 
-  </head>
+</head>
 
 <body>
   <div class="wrapper">
     <header id="webSiteHeader" class="webSiteHeader">
       <h1 class="mainTitles">Rendezvous</h1>
       <h3 class="mainTitles">Keeping an eye on your loved ones when you can't.</h3>
-      <button id = "logoutButton" onclick="mainApp.logOut()" class="navItem">Log Out</button>
 
     </header>
     <!-- DISPLAY THIS HEADER ON FUNCTION CLICK -->
     <div id="hiddenHeader" class="hiddenHeader" style="display:none">
-      <h3 id = "hiddenHeaderTitle">Click To Expand Header</h3>
+      <h3 id="hiddenHeaderTitle">Click To Expand Header</h3>
     </div>
     <!-- ====================================== -->
     <nav id="navSection" class="navSection">
       <ul id="navList">
         <li class="navItem"><a href="main.html">Home</a></li>
         <li class="navItem"><a href="Tutorial.html">Tutorial</a></li>
-        <li class="navItem"><a href="download.html">Download</a></li>
         <li class="navItem"><a href="support.html">Support</a></li>
       </ul>
     </nav>
     <div id="mainMap"></div>
     <div class="mapOptions">
-      <h2 id = "mapOptionsTitle">Map Options</h2>
+      <h2 id="mapOptionsTitle">Map Options</h2>
 
-      <button class="mapOptionsAccordion">Search Options</button>
+      <button class="mapOptionsAccordion">Search Users</button>
       <div class="mapOptionsPanel">
-        <button class = "accordionButton" id = "findAllUsersBtn" type = "submit">Refresh User Data</button>
-        <button class = "accordionButton" id = "monitorAllUsersBtn" type = "submit">Monitor User Data</button>
-        <button class = "accordionButton" id = "clearUserDataBtn" type = "submit">Clear User Data</button>
-
+        <!-- <input class="accordionButton" type="text" placeholder="SEARCH FOR USER"> -->
+        <button class="accordionButton" id="findAllUsersBtn" type="submit">Get User Data</button>
+        <!-- <button class="accordionButton" id="monitorAllUsersBtn" type="submit">Monitor User Data</button> -->
+        <button class="accordionButton" type="submit" id="submitNameSearch">Search</button>
+        <button class="accordionButton" id="clearUserDataBtn" type="submit">Clear User Data</button>
 
       </div>
 
-      <button class="mapOptionsAccordion">Initiate Search</button>
+      <!-- <button class="mapOptionsAccordion">Initiate Search</button>
       <div class="mapOptionsPanel">
-        <input type="text" placeholder="ENTER VALUE">
-        <button type = "submit" id = "submitNameSearch">SEARCH</button>
-      </div>
+
+      </div> -->
 
       <!-- <button class="userList">List Of Users</button> -->
-      <div id = "userTitle">Users Output</div>
-      <div class="userList" id = "userPanel">
-      
+      <div id="userTitle">Users Output</div>
+      <div class="userList" id="userPanel">
+
         <!-- <ul id = "listOfUsers">
           <li>USER 1</li>
           <li>USER 2</li>
@@ -70,7 +68,8 @@
     <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
     <script src="js/firebase.js"></script>
     <script src="js/map.js"></script>
-		<script src="js/main.js"></script>
-  </body>
+    <script src="js/main.js"></script>
+
+</body>
 
 </html>
