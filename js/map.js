@@ -7,10 +7,16 @@ function initMap() {
   const usersDBEndPoint = db.ref("users");
 
   //EVENT LISTENERS HERE
+  //search button
   var refreshOutput = document.getElementById("submitNameSearch").addEventListener("click", outputUsers);
-  var findAllUsersBtn = document.getElementById("findAllUsersBtn").addEventListener("click", refreshDatabaseValues);
-  //var findAllUsersBtn = document.getElementById("monitorAllUsersBtn").addEventListener("click", monitorDatabaseValues);
+  //refresh button
+  var loadAllUsersBtn = document.getElementById("loadAllUsersBtn").addEventListener("click", refreshDatabaseValues);
+  //monitor button
+  var findAllUsersBtn = document.getElementById("monitorAllUsersBtn").addEventListener("click", outputUsers);
+  //clear button
   var clearUserDataBtn = document.getElementById("clearUserDataBtn").addEventListener("click", clearUserData);
+
+
   var monitoring = false;
 
   var userOutputList = document.getElementById("listOfUsers");
@@ -18,7 +24,7 @@ function initMap() {
 
   var users = [];
   var userLocations = [];
-  var markerCluster;
+
   ////////////////////////////////////////////////////////////////////////////
 
 
@@ -30,6 +36,7 @@ function initMap() {
   var map = new google.maps.Map(document.getElementById('mainMap'), {
     zoom: 9
   });
+  var markerClusterer = new MarkerClusterer(map);
   var infoWindow = new google.maps.InfoWindow;
 
   function mapLocate() {
@@ -78,6 +85,7 @@ function initMap() {
       .catch((error) => {
         console.log("error is: " + error)
       });
+
   }
 
   function monitorDatabaseValues() {
@@ -106,9 +114,11 @@ function initMap() {
   }
 
   function outputUsers() {
+
+
     userLocations.length = 0;
     //console.log("function triggered");
-    
+
     while (userPanel.hasChildNodes()) {
       userPanel.removeChild(userPanel.firstChild);
     }
@@ -116,6 +126,8 @@ function initMap() {
     var userLength = users.length;
     var outputDiv = document.createElement("div");
     console.log("USER LENGTH " + userLength);
+
+
 
     for (var i = 0; i < userLength; i++) {
 
@@ -125,6 +137,7 @@ function initMap() {
       var emergencyContactName = users[i].emergencyContact.name;
       var emergencyContactNumber = users[i].emergencyContact.phone;
       var node = document.createElement("div");
+
 
       var Latlng = new google.maps.LatLng(userLat, userLng);
       var marker = new google.maps.Marker({
@@ -155,6 +168,7 @@ function initMap() {
       node.appendChild(document.createElement("br"));
       node.appendChild(contactNumber);
       node.addEventListener("click", showLocation);
+      node.addEventListener("click", removeMarkers);
 
       userPanel.appendChild(node);
 
@@ -172,9 +186,10 @@ function initMap() {
     while (userPanel.hasChildNodes()) {
       userPanel.removeChild(userPanel.firstChild);
     }
-    markerCluster.clearMarkers();  
+
     users = [];
     userLocations = [];
+    removeMarkers();
 
   }
 
@@ -188,9 +203,32 @@ function initMap() {
     map.setZoom(12);
     infoWindow.setPosition(Latlng);
     infoWindow.setContent(id + " LAT: " + lat + " LNG: " + lng);
-
   }
+
+  function removeMarkers() {
+    markerCluster.clearMarkers();
+  }
+
 }
+/* Search bar function
+function myFunction() {
+
+    var input= document.getElementById('submitNameSearch');
+    var filter= input.value.toUpperCase();
+    var ul= document.getElementById("userPanel");
+    var li= ul.getElementsByTagName('div');
+
+    for (var i = 0; i < li.length; i++) {
+        var a = li[i].getAttribute("userName")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        };
+    };
+};
+
+*/
 
 
 
