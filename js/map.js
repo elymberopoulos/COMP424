@@ -9,21 +9,17 @@ function initMap() {
   //EVENT LISTENERS HERE
   //search button
   var refreshOutput = document.getElementById("submitNameSearch").addEventListener("click", outputUsers);
-  //refresh button
-  var loadAllUsersBtn = document.getElementById("loadAllUsersBtn").addEventListener("click", refreshDatabaseValues);
-  //monitor button
-  var findAllUsersBtn = document.getElementById("monitorAllUsersBtn").addEventListener("click", outputUsers);
-  //clear button
-  var clearUserDataBtn = document.getElementById("clearUserDataBtn").addEventListener("click", clearUserData);
+var findAllUsersBtn = document.getElementById("findAllUsersBtn").addEventListener("click", refreshDatabaseValues);
+//var findAllUsersBtn = document.getElementById("monitorAllUsersBtn").addEventListener("click", monitorDatabaseValues);
+var clearUserDataBtn = document.getElementById("clearUserDataBtn").addEventListener("click", clearUserData);
+var monitoring = false;
 
+var userOutputList = document.getElementById("listOfUsers");
+var userPanel = document.getElementById("userPanel");
 
-  var monitoring = false;
-
-  var userOutputList = document.getElementById("listOfUsers");
-  var userPanel = document.getElementById("userPanel");
-
-  var users = [];
-  var userLocations = [];
+var users = [];
+var userLocations = [];
+var markerCluster;
 
   ////////////////////////////////////////////////////////////////////////////
 
@@ -36,7 +32,7 @@ function initMap() {
   var map = new google.maps.Map(document.getElementById('mainMap'), {
     zoom: 9
   });
-  var markerClusterer = new MarkerClusterer(map);
+
   var infoWindow = new google.maps.InfoWindow;
 
   function mapLocate() {
