@@ -155,7 +155,6 @@ function initMap() {
       node.appendChild(document.createElement("br"));
       node.appendChild(contactNumber);
       node.addEventListener("click", showLocation);
-      node.addEventListener("click", removeMarkers);
 
       userPanel.appendChild(node);
 
@@ -193,10 +192,6 @@ function initMap() {
     map.setZoom(14);
     infoWindow.setPosition(Latlng);
     infoWindow.setContent(id + " LAT: " + lat + " LNG: " + lng);
-  }
-
-  function removeMarkers() {
-    markerCluster.clearMarkers();
   }
 
 }
