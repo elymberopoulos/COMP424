@@ -3,6 +3,7 @@ function initMainPage() {
   var myMap, mainWindow;
   var acc = document.getElementsByClassName("mapOptionsAccordion");
   for (i = 0; i < acc.length; i++) {
+    
     acc[i].addEventListener("click", function() {
       this.classList.toggle("activeMapAccordion");
       var mapOptionsPanel = this.nextElementSibling;

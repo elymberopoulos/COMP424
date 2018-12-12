@@ -34,3 +34,48 @@ var mainApp = {};
   }
   mainApp.logOut = logOut;
 })();
+
+document.getElementById('questionForm').addEventListener('submit', submitForm);
+
+// Submit form
+function submitForm(e){
+  e.preventDefault();
+
+  // Get values
+  var name = getInputVal('name');
+  var company = getInputVal('company');
+  var email = getInputVal('email');
+  var phone = getInputVal('phone');
+  var question = getInputVal('question');
+
+  // Save message
+  saveMessage(name, company, email, phone, question);
+
+  // Show alert
+  document.querySelector('.alert').style.display = 'block';
+
+  // Hide alert after 3 seconds
+  setTimeout(function(){
+    document.querySelector('.alert').style.display = 'none';
+  },3000);
+
+  // Clear form
+  document.getElementById('questionForm').reset();
+}
+
+// Function to get get form values
+function getInputVal(id){
+  return document.getElementById(id).value;
+}
+
+// Save message to firebase
+function saveMessage(name, company, email, phone, question){
+  var newMessageRef = messagesRef.push();
+  newMessageRef.set({
+    name: name,
+    company:company,
+    email:email,
+    phone:phone,
+    question:question
+  });
+}

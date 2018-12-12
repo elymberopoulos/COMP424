@@ -32,13 +32,8 @@ body{
   border: none;
 }
 
-#createAccountButton{
-  float: right;
-  margin-top: 35px;
-  width: 120px;
-  background-color: #0099e6;
-  margin-right: 2px;
-}
+
+
 
 #navSection{
   margin: 0px;
@@ -58,6 +53,7 @@ body{
   padding: 5px;
   background-color: #0099e6;
   border-radius: 5px;
+  font-size: 20px;
 }
 
 .navItem a{
@@ -325,9 +321,9 @@ h1.login-title {
 
 /* TUTORIAL PAGE*/
 .tutorialContent{
-  grid-column: 5/10;
-  grid-row: 4/10;
-  background-color: rgb(13, 123, 164, 0.7);
+  grid-column: 5/9;
+  grid-row: 3/10;
+
 }
 
 .tutorialOptionsAccordion {
@@ -352,12 +348,15 @@ h1.login-title {
     display: none;
     overflow: hidden;
     color: black;
+    font-size: 20px;
 }
 .tutorialOptions{
 
   grid-column: 6/9;
-
   grid-row: 5/7;
+}
+#comment{
+  font-size: 24px;
 }
 #myInput {
 
@@ -378,8 +377,9 @@ h1.login-title {
     padding: 0;
     margin: 0;
     color:white;
-    grid-column: 6/8;
+    grid-column: 3/6;
     grid-row: 5/auto;
+    align: left;
     }
 
   .search li a {
@@ -446,12 +446,12 @@ h1.login-title {
 }
 
 .SupportHeader{
-  grid-column: 6/8;
-  grid-row: 2/3;
+  grid-column: 5/9;
+  grid-row: 3/10;
 }
 .SupportHeader #section-title{
-  text-align: center;
-  padding-top: 30px;
+  text-align: left;
+
 }
 
 #list2{
@@ -460,7 +460,7 @@ h1.login-title {
 
 li{
   text-align: left;
-  
+
 }
 #userPanel{
   overflow-y: scroll;
@@ -529,6 +529,7 @@ li{
   color: black;
   font-size: 18px;
 }
+
 .logoutRedirect{
   text-align: center;
   align-content: center;
@@ -540,5 +541,6 @@ li{
 }
 #signoutRedirect{
   text-decoration: none;
+
   color: black;
 }

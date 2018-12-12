@@ -6,7 +6,9 @@ function initMap() {
   const usersDBEndPoint = db.ref("users");
 
   //EVENT LISTENERS HERE
+  //search button
   var refreshOutput = document.getElementById("submitNameSearch").addEventListener("click", outputUsers);
+
   var findAllUsersBtn = document.getElementById("findAllUsersBtn").addEventListener("click", refreshDatabaseValues);
   var clearUserDataBtn = document.getElementById("clearUserDataBtn").addEventListener("click", clearUserData);
   //var findAllUsersBtn = document.getElementById("monitorAllUsersBtn").addEventListener("click", monitorDatabaseValues); IMPLEMENT LATER
@@ -70,6 +72,7 @@ function initMap() {
       .catch((error) => {
         console.log("error is: " + error)
       });
+
   }
 
   //  IMPLEMENT LATER
@@ -103,6 +106,7 @@ function initMap() {
   function outputUsers() {
     //Reset nodes to prevent node stacking
     userLocations.length = 0;
+
     while (userPanel.hasChildNodes()) {
       userPanel.removeChild(userPanel.firstChild);
     }
@@ -110,6 +114,8 @@ function initMap() {
     var userLength = users.length;
     var outputDiv = document.createElement("div");
     console.log("USER LENGTH " + userLength);
+
+
 
     for (var i = 0; i < userLength; i++) {
       //Isolate JSON values and inject them into the DOM as nodes with event listeners
@@ -121,6 +127,7 @@ function initMap() {
       var node = document.createElement("div");
       
       //create new Google Maps LatLng for the marker clusterer
+
       var Latlng = new google.maps.LatLng(userLat, userLng);
       var marker = new google.maps.Marker({
         position: Latlng,
@@ -148,6 +155,7 @@ function initMap() {
       node.appendChild(document.createElement("br"));
       node.appendChild(contactNumber);
       node.addEventListener("click", showLocation);
+      node.addEventListener("click", removeMarkers);
 
       userPanel.appendChild(node);
 
@@ -171,6 +179,7 @@ function initMap() {
     markerCluster.clearMarkers();
     users = [];
     userLocations = [];
+
   }
 
   function showLocation() {
@@ -184,8 +193,32 @@ function initMap() {
     map.setZoom(14);
     infoWindow.setPosition(Latlng);
     infoWindow.setContent(id + " LAT: " + lat + " LNG: " + lng);
-
   }
+
+  function removeMarkers() {
+    markerCluster.clearMarkers();
+  }
+
 }
+/* Search bar function
+function myFunction() {
+
+    var input= document.getElementById('submitNameSearch');
+    var filter= input.value.toUpperCase();
+    var ul= document.getElementById("userPanel");
+    var li= ul.getElementsByTagName('div');
+
+    for (var i = 0; i < li.length; i++) {
+        var a = li[i].getAttribute("userName")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        };
+    };
+};
+
+*/
 
 initMap()
+
