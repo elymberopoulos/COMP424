@@ -14,7 +14,6 @@ function myFunction() {
         };
     };
 };
-
 myFunction();
 
 var mainApp = {};
