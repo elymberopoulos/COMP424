@@ -200,25 +200,7 @@ function initMap() {
   }
 
 }
-/* Search bar function
-function myFunction() {
 
-    var input= document.getElementById('submitNameSearch');
-    var filter= input.value.toUpperCase();
-    var ul= document.getElementById("userPanel");
-    var li= ul.getElementsByTagName('div');
-
-    for (var i = 0; i < li.length; i++) {
-        var a = li[i].getAttribute("userName")[0];
-        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
-        };
-    };
-};
-
-*/
 
 initMap()
 
